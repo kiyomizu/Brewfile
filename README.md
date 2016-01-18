@@ -14,6 +14,12 @@ $ brew doctor
 
 ### git インストール
 ```
+$  brew install git
+```
+
+### brew update
+```
+$ brew update
 ```
 
 ### home-brew cask インストール
@@ -26,33 +32,30 @@ $ brew install caskroom/cask/brew-cask
 $ echo 'export HOMEBREW_CASK_OPTS="--appdir=/Applications"' >> ~/.bash_profile
 ```
 
-## パッケージの管理
-
-## homebrew-bundle で管理する
+### brew-fileインストール
 ```
-# brewにbundleコマンドが使えるようにする
-$ brew tap Homebrew/bundle
-# homebrewのGemfileみたいなファイルを作る
-$ touch Brewfile
+$ brew tap rcmdnk/file
+$ brew install brew-file
 ```
 
-
-git@github.com:kiyomizu/Brewfile.git
-
-### Brewfileの作成
+### git Brewfileをセットする
 ```
-cask_args appdir: '/Applications'
-tap 'caskroom/cask'
-cask 'google-chrome'
-cask 'firefox', args: { appdir: '/Applications' }
+$ brew file set_repo -r git@github.com:kiyomizu/Brewfile
+$ brew file init
 ```
 
-> HomebrewでインストールしたパッケージのBrewfileを作成したい場合は `$ brew bundle dump` でOK
+### Brewfileの編集
+```
+$ brew file casklist
+$ brew file edit
+```
 
-## アップグレード確認
+### アプリケーションのアップデート
 ```
-$ brew bundle check
-```
+$ brew file cask_upgrade -C
+# 古いバージョンも残す場合は
+$ brew cask update
+S```
 
 ## 参考
 https://github.com/caskroom/homebrew-cask/blob/master/CONTRIBUTING.md#adding-a-cask
